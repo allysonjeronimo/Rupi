@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">@color/colorDarkAltGray</color>
     <color name="colorAccent">@color/colorGreen</color>
     <color name="colorGreen">#1DE9B6</color>
+    <color name="colorDarkGreen">#00bfa5</color>
     <color name="colorLightGray">#ECEFF1</color>
+    <color name="colorLightAltGray">#cfd8dc</color>
     <color name="colorDarkGray">#607D8B</color>
     <color name="colorDarkAltGray">#37474f</color>
 </resources>

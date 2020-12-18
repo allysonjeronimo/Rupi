@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Rupi</string>
+    <string name="text_convert">Converter</string>
+    <string name="text_currency">Dólar</string>
 </resources>
