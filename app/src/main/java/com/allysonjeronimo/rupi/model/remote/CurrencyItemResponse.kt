@@ -1,5 +1,7 @@
 package com.allysonjeronimo.rupi.model.remote
 
+import android.os.Build
+import com.allysonjeronimo.rupi.extensions.toDate
 import com.allysonjeronimo.rupi.model.entity.Currency
 import java.util.*
 
@@ -22,6 +24,7 @@ data class CurrencyItemResponse(
             buy = bid,
             sell = ask,
             high = high,
-            low = low)
+            low = low,
+            date = create_date!!.toDate())
     }
 }
