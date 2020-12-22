@@ -5,9 +5,7 @@ import androidx.room.PrimaryKey
 import com.allysonjeronimo.rupi.extensions.currencyFormat
 import java.util.*
 
-@Entity(tableName="currency")
 data class Currency (
-    @PrimaryKey(autoGenerate = true)
     var id:Long = 0,
     var code:String? = null,
     var name:String? = null,

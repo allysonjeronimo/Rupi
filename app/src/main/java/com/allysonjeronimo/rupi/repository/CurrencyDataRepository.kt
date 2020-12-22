@@ -1,4 +1,4 @@
-package com.allysonjeronimo.rupi.data.repository
+package com.allysonjeronimo.rupi.repository
 
 import com.allysonjeronimo.rupi.data.entity.Currency
 import com.allysonjeronimo.rupi.data.remote.AwesomeApi

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
 import com.allysonjeronimo.rupi.data.remote.AwesomeApi
-import com.allysonjeronimo.rupi.data.repository.CurrencyDataRepository
+import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
 import kotlinx.android.synthetic.main.main_fragment.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

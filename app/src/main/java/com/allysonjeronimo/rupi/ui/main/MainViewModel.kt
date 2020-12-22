@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.data.entity.Currency
-import com.allysonjeronimo.rupi.data.repository.CurrencyRepository
+import com.allysonjeronimo.rupi.repository.CurrencyRepository
 
 class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
 
