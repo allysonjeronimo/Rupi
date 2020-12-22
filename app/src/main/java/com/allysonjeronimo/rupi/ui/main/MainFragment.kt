@@ -28,7 +28,11 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        createViewModel()
+        observeEvents()
+    }
 
+    private fun createViewModel(){
         val retrofit = Retrofit
             .Builder()
             .baseUrl("https://economia.awesomeapi.com.br/")
@@ -42,14 +46,36 @@ class MainFragment : Fragment() {
             MainViewModel.MainViewModelFactory(repository)
         ).get(MainViewModel::class.java)
 
+    }
+
+    private fun observeEvents(){
         viewModel.currencies().observe(this.viewLifecycleOwner, {currencies ->
             button_currency.text = currencies[0].name
+            text_currency_1.text = currencies[0].defaulValue()
+            text_currency_2.text = currencies[0].quotation()
         })
+
+        viewModel.isLoading().observe(this.viewLifecycleOwner, {
+                isLoading ->
+            if(isLoading)
+                showProgress()
+            else
+                hideProgress()
+        })
+    }
+
+    private fun showProgress(){
+        progress_loading.visibility = View.VISIBLE
+        group_view.visibility = View.GONE
+    }
+
+    private fun hideProgress(){
+        progress_loading.visibility = View.GONE
+        group_view.visibility = View.VISIBLE
     }
 
     override fun onStart() {
         super.onStart()
-
         viewModel.getAll()
     }
 

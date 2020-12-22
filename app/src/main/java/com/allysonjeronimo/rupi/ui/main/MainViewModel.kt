@@ -10,14 +10,24 @@ import com.allysonjeronimo.rupi.model.repository.CurrencyRepository
 class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
 
     private var currencies = MutableLiveData<List<Currency>>()
+    private var isLoading = MutableLiveData<Boolean>()
+    private var currentCurrency = MutableLiveData<Currency>()
 
     fun currencies() = currencies as LiveData<List<Currency>>
+    fun isLoading() = isLoading as LiveData<Boolean>
+    fun currentCurrency() = currentCurrency as LiveData<Currency>
 
     fun getAll(){
-        repository.getAll({ list -> currencies.value = list
-        }, {
-
-        })
+        isLoading.value = true
+        repository.getAll(
+            {
+                list -> currencies.value = list
+                isLoading.value = false
+            },
+            {
+                isLoading.value = false
+            }
+        )
     }
 
     class MainViewModelFactory(
