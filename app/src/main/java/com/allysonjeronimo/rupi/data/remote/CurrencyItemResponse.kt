@@ -1,9 +1,7 @@
-package com.allysonjeronimo.rupi.model.remote
+package com.allysonjeronimo.rupi.data.remote
 
-import android.os.Build
 import com.allysonjeronimo.rupi.extensions.toDate
-import com.allysonjeronimo.rupi.model.entity.Currency
-import java.util.*
+import com.allysonjeronimo.rupi.data.entity.Currency
 
 data class CurrencyItemResponse(
     var code:String? = null,

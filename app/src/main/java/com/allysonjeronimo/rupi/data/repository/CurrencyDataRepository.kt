@@ -1,8 +1,8 @@
-package com.allysonjeronimo.rupi.model.repository
+package com.allysonjeronimo.rupi.data.repository
 
-import com.allysonjeronimo.rupi.model.entity.Currency
-import com.allysonjeronimo.rupi.model.remote.AwesomeApi
-import com.allysonjeronimo.rupi.model.remote.CurrencyResponse
+import com.allysonjeronimo.rupi.data.entity.Currency
+import com.allysonjeronimo.rupi.data.remote.AwesomeApi
+import com.allysonjeronimo.rupi.data.remote.CurrencyResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

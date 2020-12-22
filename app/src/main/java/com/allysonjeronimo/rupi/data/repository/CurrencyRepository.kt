@@ -1,6 +1,6 @@
-package com.allysonjeronimo.rupi.model.repository
+package com.allysonjeronimo.rupi.data.repository
 
-import com.allysonjeronimo.rupi.model.entity.Currency
+import com.allysonjeronimo.rupi.data.entity.Currency
 
 interface CurrencyRepository {
 

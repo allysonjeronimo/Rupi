@@ -1,6 +1,6 @@
-package com.allysonjeronimo.rupi.model.remote
+package com.allysonjeronimo.rupi.data.remote
 
-import com.allysonjeronimo.rupi.model.entity.Currency
+import com.allysonjeronimo.rupi.data.entity.Currency
 
 data class CurrencyResponse(
     var USD:CurrencyItemResponse,

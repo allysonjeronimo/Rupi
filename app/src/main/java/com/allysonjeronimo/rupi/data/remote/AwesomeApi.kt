@@ -1,4 +1,4 @@
-package com.allysonjeronimo.rupi.model.remote
+package com.allysonjeronimo.rupi.data.remote
 
 import retrofit2.Call
 import retrofit2.http.GET

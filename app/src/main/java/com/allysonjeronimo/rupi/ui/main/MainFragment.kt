@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
-import com.allysonjeronimo.rupi.model.remote.AwesomeApi
-import com.allysonjeronimo.rupi.model.repository.CurrencyDataRepository
+import com.allysonjeronimo.rupi.data.remote.AwesomeApi
+import com.allysonjeronimo.rupi.data.repository.CurrencyDataRepository
 import kotlinx.android.synthetic.main.main_fragment.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -45,7 +45,6 @@ class MainFragment : Fragment() {
             this,
             MainViewModel.MainViewModelFactory(repository)
         ).get(MainViewModel::class.java)
-
     }
 
     private fun observeEvents(){
