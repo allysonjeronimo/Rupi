@@ -2,4 +2,8 @@
     <string name="app_name">Rupi</string>
     <string name="text_convert">Converter</string>
     <string name="text_currency">Dólar</string>
+    <string name="action_about">Sobre o Rupi</string>
+    <string name="action_rating">Avalie</string>
+    <string name="action_feedback">Enviar Sugestões</string>
+    <string name="action_settings">Configurações</string>
 </resources>

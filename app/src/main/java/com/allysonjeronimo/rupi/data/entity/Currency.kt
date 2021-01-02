@@ -1,7 +1,5 @@
 package com.allysonjeronimo.rupi.data.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.allysonjeronimo.rupi.extensions.currencyFormat
 import java.util.*
 

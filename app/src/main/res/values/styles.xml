@@ -15,4 +15,9 @@
     <style name="ToolbarStyle.Title" parent="TextAppearance.AppCompat.Title">
         <item name="android:textColor">#FFF</item>
     </style>
+
+    <style name="MainTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
 </resources>

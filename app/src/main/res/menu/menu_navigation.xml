@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_info"
+        android:title="@string/action_about"
+        />
+
+    <item
+        android:id="@+id/action_rating"
+        android:icon="@drawable/ic_star"
+        android:title="@string/action_rating"
+        />
+
+    <item
+        android:id="@+id/action_feedback"
+        android:icon="@drawable/ic_message"
+        android:title="@string/action_feedback"
+        />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/action_settings"
+        />
+
+</menu>
