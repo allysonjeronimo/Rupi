@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
         drawerToggle.isDrawerIndicatorEnabled = false
-        drawerToggle.setHomeAsUpIndicator(R.drawable.ic_rupi_logo)
+        drawerToggle.setHomeAsUpIndicator(R.drawable.ic_logo_toolbar)
 
         drawerToggle.setToolbarNavigationClickListener {
             if(drawer_layout.isDrawerOpen(GravityCompat.START)){
