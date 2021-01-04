@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
 import com.allysonjeronimo.rupi.data.entity.Currency
 import com.allysonjeronimo.rupi.data.remote.AwesomeApi
+import com.allysonjeronimo.rupi.extensions.resourceId
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
 import com.allysonjeronimo.rupi.ui.currencies.CurrenciesDialogFragment
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -53,8 +54,14 @@ class MainFragment : Fragment() {
     private fun observeEvents(){
         viewModel.currentCurrency().observe(this.viewLifecycleOwner, {
             currentCurrency ->
+            button_currency.setCompoundDrawablesWithIntrinsicBounds(
+                requireContext().resourceId(currentCurrency.icon()),
+                0,
+                R.drawable.ic_arrow_down,
+                0
+            )
             button_currency.text = currentCurrency.name
-            text_currency_1.text = currentCurrency.defaulValue()
+            text_currency_1.text = currentCurrency.defaultValue()
             text_currency_2.text = currentCurrency.quotation()
         })
 

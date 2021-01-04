@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.allysonjeronimo.rupi.R
 import com.allysonjeronimo.rupi.data.entity.Currency
+import com.allysonjeronimo.rupi.extensions.resourceId
 import kotlinx.android.synthetic.main.currency_item.view.*
 
 class CurrencyAdapter(
@@ -34,6 +35,7 @@ class CurrencyAdapter(
 
         fun bind(currency:Currency){
             textName.text = currency.name
+            imageIcon.setImageResource(itemView.context.resourceId(currency.icon()))
         }
     }
 }

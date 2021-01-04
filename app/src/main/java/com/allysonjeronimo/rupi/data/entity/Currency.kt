@@ -15,11 +15,15 @@ data class Currency (
     var locale:Locale = Locale.getDefault()
 ){
 
-    fun defaulValue() : String{
+    fun defaultValue() : String{
         return 1.0.currencyFormat(this.locale)
     }
 
     fun quotation() : String{
-        return "${sell.currencyFormat(Locale("pt", "BR"))}"
+        return sell.currencyFormat(Locale("pt", "BR"))
+    }
+
+    fun icon() : String{
+        return "ic_${code?.toLowerCase(Locale.ROOT)}"
     }
 }

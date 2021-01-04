@@ -28,7 +28,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginEnd="42dp"
         android:layout_marginTop="42dp"
-        android:drawableStart="@drawable/ic_dollar"
+        android:drawableStart="@drawable/ic_usd"
         />
 
     <TextView
