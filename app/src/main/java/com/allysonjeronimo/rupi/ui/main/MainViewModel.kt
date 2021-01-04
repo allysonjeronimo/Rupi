@@ -13,8 +13,8 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
     private var isLoading = MutableLiveData<Boolean>()
     private var currentCurrency = MutableLiveData<Currency>()
 
-    fun currencies() = currencies as LiveData<List<Currency>>
     fun isLoading() = isLoading as LiveData<Boolean>
+    fun currencies() = currencies as LiveData<List<Currency>>
     fun currentCurrency() = currentCurrency as LiveData<Currency>
 
     fun getAll(){
@@ -23,6 +23,10 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
             {
                 list -> currencies.value = list
                 isLoading.value = false
+
+                if(currentCurrency.value == null && currencies.value?.isNotEmpty() == true){
+                    currentCurrency.value = currencies.value!![0]
+                }
             },
             {
                 isLoading.value = false

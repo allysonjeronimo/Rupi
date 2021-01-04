@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
+import com.allysonjeronimo.rupi.data.entity.Currency
 import com.allysonjeronimo.rupi.data.remote.AwesomeApi
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
+import com.allysonjeronimo.rupi.ui.currencies.CurrenciesDialogFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,12 +32,13 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         createViewModel()
         observeEvents()
+        setListeners()
     }
 
     private fun createViewModel(){
         val retrofit = Retrofit
             .Builder()
-            .baseUrl("https://economia.awesomeapi.com.br/")
+            .baseUrl(resources.getString(R.string.base_url_awesome_api))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -48,10 +51,11 @@ class MainFragment : Fragment() {
     }
 
     private fun observeEvents(){
-        viewModel.currencies().observe(this.viewLifecycleOwner, {currencies ->
-            button_currency.text = currencies[0].name
-            text_currency_1.text = currencies[0].defaulValue()
-            text_currency_2.text = currencies[0].quotation()
+        viewModel.currentCurrency().observe(this.viewLifecycleOwner, {
+            currentCurrency ->
+            button_currency.text = currentCurrency.name
+            text_currency_1.text = currentCurrency.defaulValue()
+            text_currency_2.text = currentCurrency.quotation()
         })
 
         viewModel.isLoading().observe(this.viewLifecycleOwner, {
@@ -71,6 +75,14 @@ class MainFragment : Fragment() {
     private fun hideProgress(){
         progress_loading.visibility = View.GONE
         group_view.visibility = View.VISIBLE
+    }
+
+    private fun setListeners() {
+        button_currency.setOnClickListener {
+            CurrenciesDialogFragment
+                .newInstance(viewModel.currencies().value ?: listOf<Currency>())
+                .show(activity!!.supportFragmentManager, CurrenciesDialogFragment.TAG)
+        }
     }
 
     override fun onStart() {

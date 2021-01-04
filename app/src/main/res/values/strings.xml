@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Rupi</string>
+    <string name="base_url_awesome_api">https://economia.awesomeapi.com.br/</string>
     <string name="text_convert">Converter</string>
     <string name="text_currency">Dólar</string>
     <string name="action_about">Sobre o Rupi</string>
