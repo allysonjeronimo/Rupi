@@ -80,7 +80,9 @@ class MainFragment : Fragment() {
     private fun setListeners() {
         button_currency.setOnClickListener {
             CurrenciesDialogFragment
-                .newInstance(viewModel.currencies().value ?: listOf<Currency>())
+                .newInstance(viewModel.currencies().value ?: listOf<Currency>()) { currency ->
+                    viewModel.updateCurrentCurrency(currency)
+                }
                 .show(activity!!.supportFragmentManager, CurrenciesDialogFragment.TAG)
         }
     }

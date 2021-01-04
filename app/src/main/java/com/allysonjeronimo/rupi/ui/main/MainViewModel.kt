@@ -17,6 +17,10 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
     fun currencies() = currencies as LiveData<List<Currency>>
     fun currentCurrency() = currentCurrency as LiveData<Currency>
 
+    fun updateCurrentCurrency(currency:Currency){
+        currentCurrency.value = currency
+    }
+
     fun getAll(){
         isLoading.value = true
         repository.getAll(
