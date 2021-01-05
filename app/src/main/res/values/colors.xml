@@ -7,6 +7,8 @@
     <color name="colorDarkGreen">#00bfa5</color>
     <color name="colorLightGray">#ECEFF1</color>
     <color name="colorLightAltGray">#cfd8dc</color>
+    <color name="colorGray">#90a4ae</color>
     <color name="colorDarkGray">#607D8B</color>
     <color name="colorDarkAltGray">#37474f</color>
+    <color name="colorPink">#EC407A</color>
 </resources>

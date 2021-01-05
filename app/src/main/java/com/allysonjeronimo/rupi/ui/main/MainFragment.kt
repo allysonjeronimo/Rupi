@@ -57,7 +57,7 @@ class MainFragment : Fragment() {
             button_currency.setCompoundDrawablesWithIntrinsicBounds(
                 requireContext().resourceId(currentCurrency.icon()),
                 0,
-                R.drawable.ic_arrow_down,
+                R.drawable.ic_filled_arrow_down,
                 0
             )
             button_currency.text = currentCurrency.name
