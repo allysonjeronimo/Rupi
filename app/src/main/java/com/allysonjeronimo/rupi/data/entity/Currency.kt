@@ -2,6 +2,7 @@ package com.allysonjeronimo.rupi.data.entity
 
 import com.allysonjeronimo.rupi.extensions.currencyFormat
 import java.util.*
+import java.util.Currency
 
 data class Currency (
     var id:Long = 0,
@@ -16,11 +17,11 @@ data class Currency (
 ){
 
     fun defaultValue() : String{
-        return 1.0.currencyFormat(this.locale)
+        return 1.0.currencyFormat(this.locale, Currency.getInstance(code))
     }
 
     fun quotation() : String{
-        return sell.currencyFormat(Locale("pt", "BR"))
+        return sell.currencyFormat(Locale("pt", "BR"), Currency.getInstance("BRL"))
     }
 
     fun icon() : String{
