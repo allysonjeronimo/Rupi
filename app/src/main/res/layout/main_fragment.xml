@@ -100,15 +100,24 @@
             android:layout_marginRight="6dp">
 
             <ImageView
-                android:id="@+id/image_arrow_down"
+                android:id="@+id/image_arrow_up"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_arrow_up"
                 android:layout_gravity="center"
                 />
 
+            <ImageView
+                android:id="@+id/image_arrow_down"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_down"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                />
+
             <TextView
-                android:id="@+id/text_change"
+                android:id="@+id/text_variation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -127,7 +136,6 @@
             >
 
             <ImageView
-                android:id="@+id/image_last_update"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_update"
@@ -148,10 +156,6 @@
 
     </LinearLayout>
 
-
-
-
-
     <Button
         android:id="@+id/button_convert"
         android:layout_width="match_parent"
@@ -171,7 +175,7 @@
         android:id="@+id/group_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button_currency, text_currency_1, view_icon, text_currency_2, button_convert"
+        app:constraint_referenced_ids="button_currency, text_currency_1, view_icon, text_currency_2, view_variation, button_convert"
         android:visibility="visible"
         />
 

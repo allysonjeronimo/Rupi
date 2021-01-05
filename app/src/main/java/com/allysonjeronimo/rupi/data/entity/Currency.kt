@@ -10,6 +10,7 @@ data class Currency (
     var name:String? = null,
     var high:Double = 0.0,
     var low:Double = 0.0,
+    var pctChange:Double = 0.0,
     var sell:Double = 0.0,
     var buy:Double = 0.0,
     var date: Date = Date(),
@@ -26,5 +27,9 @@ data class Currency (
 
     fun icon() : String{
         return "ic_${code?.toLowerCase(Locale.ROOT)}"
+    }
+
+    fun variation() : String{
+        return "${pctChange}%"
     }
 }

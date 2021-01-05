@@ -23,6 +23,7 @@ data class CurrencyItemResponse(
             sell = ask,
             high = high,
             low = low,
+            pctChange = pctChange,
             date = create_date!!.toDate())
     }
 }

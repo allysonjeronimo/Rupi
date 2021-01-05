@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
 import com.allysonjeronimo.rupi.data.entity.Currency
 import com.allysonjeronimo.rupi.data.remote.AwesomeApi
+import com.allysonjeronimo.rupi.extensions.FORMAT_TIME_HOURS_MINUTES
 import com.allysonjeronimo.rupi.extensions.resourceId
+import com.allysonjeronimo.rupi.extensions.toString
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
 import com.allysonjeronimo.rupi.ui.currencies.CurrenciesDialogFragment
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -63,6 +65,10 @@ class MainFragment : Fragment() {
             button_currency.text = currentCurrency.name
             text_currency_1.text = currentCurrency.defaultValue()
             text_currency_2.text = currentCurrency.quotation()
+            text_variation.text = currentCurrency.variation()
+            image_arrow_up.visibility = if(currentCurrency.pctChange >= 0.0) View.VISIBLE else View.GONE
+            image_arrow_down.visibility = if(currentCurrency.pctChange < 0.0) View.VISIBLE else View.GONE
+            text_last_update.text = currentCurrency.date.toString(FORMAT_TIME_HOURS_MINUTES)
         })
 
         viewModel.isLoading().observe(this.viewLifecycleOwner, {
