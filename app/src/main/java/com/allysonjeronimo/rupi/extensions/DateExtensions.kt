@@ -3,7 +3,7 @@ package com.allysonjeronimo.rupi.extensions
 import java.text.SimpleDateFormat
 import java.util.*
 
-const val FORMAT_TIME_HOURS_MINUTES = "hh:mm"
+const val FORMAT_TIME_HOURS_MINUTES = "HH:mm"
 
 fun Date.toString(format:String = "yyyy-MM-dd hh:mm:ss") : String{
     val formatter = SimpleDateFormat(format)

@@ -55,20 +55,7 @@ class MainFragment : Fragment() {
 
     private fun observeEvents(){
         viewModel.currentCurrency().observe(this.viewLifecycleOwner, {
-            currentCurrency ->
-            button_currency.setCompoundDrawablesWithIntrinsicBounds(
-                requireContext().resourceId(currentCurrency.icon()),
-                0,
-                R.drawable.ic_filled_arrow_down,
-                0
-            )
-            button_currency.text = currentCurrency.name
-            text_currency_1.text = currentCurrency.defaultValue()
-            text_currency_2.text = currentCurrency.quotation()
-            text_variation.text = currentCurrency.variation()
-            image_arrow_up.visibility = if(currentCurrency.pctChange >= 0.0) View.VISIBLE else View.GONE
-            image_arrow_down.visibility = if(currentCurrency.pctChange < 0.0) View.VISIBLE else View.GONE
-            text_last_update.text = currentCurrency.date.toString(FORMAT_TIME_HOURS_MINUTES)
+            currentCurrency -> showValues(currentCurrency)
         })
 
         viewModel.isLoading().observe(this.viewLifecycleOwner, {
@@ -78,6 +65,36 @@ class MainFragment : Fragment() {
             else
                 hideProgress()
         })
+    }
+
+    private fun showValues(currentCurrency:Currency){
+        button_currency.setCompoundDrawablesWithIntrinsicBounds(
+            requireContext().resourceId(currentCurrency.icon()),
+            0,
+            R.drawable.ic_filled_arrow_down,
+            0
+        )
+        button_currency.text = currentCurrency.name
+        text_currency_1.text = currentCurrency.defaultValue()
+        text_currency_2.text = currentCurrency.quotation()
+        text_variation.text = currentCurrency.variation()
+        text_last_update.text = currentCurrency.date.toString(FORMAT_TIME_HOURS_MINUTES)
+
+        if(currentCurrency.pctChange > 0.0){
+            image_up.visibility = View.VISIBLE
+            image_down.visibility = View.GONE
+            image_flat.visibility = View.GONE
+        }
+        else if(currentCurrency.pctChange < 0.0){
+            image_up.visibility = View.GONE
+            image_down.visibility = View.VISIBLE
+            image_flat.visibility = View.GONE
+        }
+        else{
+            image_up.visibility = View.GONE
+            image_down.visibility = View.GONE
+            image_flat.visibility = View.VISIBLE
+        }
     }
 
     private fun showProgress(){
