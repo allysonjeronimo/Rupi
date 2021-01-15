@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.allysonjeronimo.rupi.R
-import com.allysonjeronimo.rupi.data.entity.Currency
+import com.allysonjeronimo.rupi.data.db.entity.Currency
 import kotlinx.android.synthetic.main.currencies_dialog_fragment.*
 
 class CurrenciesDialogFragment : DialogFragment() {

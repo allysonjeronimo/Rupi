@@ -3,9 +3,11 @@ buildscript {
     ext{
         kotlin_version = "1.4.10"
         recycler_view_version = "1.0.0"
-        retrofit_version = '2.3.0'
+        retrofit_version = '2.9.0'
         retrofit_gson_converter_version = '2.1.0'
         material_design_version = "1.0.0"
+        room_version = "2.2.5"
+        coroutines_version = "1.2.1"
     }
     repositories {
         google()

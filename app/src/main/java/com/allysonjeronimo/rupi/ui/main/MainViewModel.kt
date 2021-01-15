@@ -1,11 +1,9 @@
 package com.allysonjeronimo.rupi.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.allysonjeronimo.rupi.data.entity.Currency
+import androidx.lifecycle.*
+import com.allysonjeronimo.rupi.data.db.entity.Currency
 import com.allysonjeronimo.rupi.repository.CurrencyRepository
+import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
 
@@ -21,21 +19,18 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
         currentCurrency.value = currency
     }
 
-    fun getAll(){
+    fun getAll() = viewModelScope.launch {
         isLoading.value = true
-        repository.getAll(
-            {
-                list -> currencies.value = list
-                isLoading.value = false
+        currencies.value = repository.allCurrencies()
 
-                if(currentCurrency.value == null && currencies.value?.isNotEmpty() == true){
-                    currentCurrency.value = currencies.value!![0]
-                }
-            },
-            {
-                isLoading.value = false
-            }
-        )
+        if(currencies.value!!.isNotEmpty()){
+            currentCurrency.value = currencies.value!![0]
+        }
+        else{
+            // show error
+        }
+
+        isLoading.value = false
     }
 
     class MainViewModelFactory(

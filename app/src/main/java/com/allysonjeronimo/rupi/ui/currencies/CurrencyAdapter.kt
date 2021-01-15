@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.allysonjeronimo.rupi.R
-import com.allysonjeronimo.rupi.data.entity.Currency
+import com.allysonjeronimo.rupi.data.db.entity.Currency
 import com.allysonjeronimo.rupi.extensions.resourceId
 import kotlinx.android.synthetic.main.currency_item.view.*
 

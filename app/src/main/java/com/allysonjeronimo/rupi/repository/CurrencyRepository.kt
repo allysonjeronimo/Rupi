@@ -1,9 +1,7 @@
 package com.allysonjeronimo.rupi.repository
 
-import com.allysonjeronimo.rupi.data.entity.Currency
+import com.allysonjeronimo.rupi.data.db.entity.Currency
 
 interface CurrencyRepository {
-
-    fun getAll(success:(List<Currency>) -> Unit, failure: () -> Unit)
-
+    suspend fun allCurrencies() : List<Currency>
 }

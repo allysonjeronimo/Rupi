@@ -7,29 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.allysonjeronimo.rupi.R
-import com.allysonjeronimo.rupi.data.entity.Currency
-import com.allysonjeronimo.rupi.data.remote.AwesomeApi
+import com.allysonjeronimo.rupi.data.db.AppDatabase
+import com.allysonjeronimo.rupi.data.db.entity.Currency
+import com.allysonjeronimo.rupi.data.network.ApiService
 import com.allysonjeronimo.rupi.extensions.FORMAT_TIME_HOURS_MINUTES
 import com.allysonjeronimo.rupi.extensions.resourceId
-import com.allysonjeronimo.rupi.extensions.toString
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
 import com.allysonjeronimo.rupi.ui.currencies.CurrenciesDialogFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
     private lateinit var viewModel: MainViewModel
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -39,13 +34,11 @@ class MainFragment : Fragment() {
     }
 
     private fun createViewModel(){
-        val retrofit = Retrofit
-            .Builder()
-            .baseUrl(resources.getString(R.string.base_url_awesome_api))
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val repository = CurrencyDataRepository(retrofit.create(AwesomeApi::class.java))
+        val remoteService = ApiService.getInstance(requireContext())
+        val cacheService = AppDatabase.getInstance(requireContext()).currencyDAO()
+
+        val repository = CurrencyDataRepository(cacheService, remoteService)
 
         viewModel = ViewModelProvider(
             this,
@@ -75,6 +68,7 @@ class MainFragment : Fragment() {
             0
         )
         button_currency.text = currentCurrency.name
+        /*
         text_currency_1.text = currentCurrency.defaultValue()
         text_currency_2.text = currentCurrency.quotation()
         text_variation.text = currentCurrency.variation()
@@ -94,7 +88,7 @@ class MainFragment : Fragment() {
             image_up.visibility = View.GONE
             image_down.visibility = View.GONE
             image_flat.visibility = View.VISIBLE
-        }
+        }*/
     }
 
     private fun showProgress(){
