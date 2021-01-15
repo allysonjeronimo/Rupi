@@ -1,5 +1,6 @@
 package com.allysonjeronimo.rupi.data.db.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
@@ -10,7 +11,9 @@ data class Currency(
     @PrimaryKey
     var id:String,
     var code: String,
-    var name: String
+    var name: String,
+    @Embedded(prefix = "last_")
+    var lastPrice:PriceData
 ) {
 
     @Ignore

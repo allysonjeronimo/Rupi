@@ -15,11 +15,11 @@ class CurrencyDataRepository(
         withContext(Dispatchers.IO) {
             try {
                 val currencies = currencyRemoteService.getAll().toCurrencyList()
-                currencyCacheService.insertWithPrices(currencies)
+                currencyCacheService.insertAll(currencies)
                 currencies
             } catch (ex: Exception) {
                 ex.printStackTrace()
-                currencyCacheService.findAllWithPrices()
+                currencyCacheService.findAll()
             }
         }
 }
