@@ -1,10 +1,20 @@
 <resources>
     <string name="app_name">Rupi</string>
-    <string name="base_url_awesome_api">https://economia.awesomeapi.com.br/</string>
-    <string name="text_convert">Converter</string>
-    <string name="text_currency">Dólar</string>
+
+    <!-- ConverterFragment -->
+
+    <string name="converter_button_convert">Converter</string>
+    <string name="converter_text_currency">Dólar</string>
+
+    <!-- Menu -->
+
     <string name="action_about">Sobre o Rupi</string>
     <string name="action_rating">Avalie</string>
     <string name="action_feedback">Enviar Sugestões</string>
     <string name="action_settings">Configurações</string>
+
+    <!-- Offline Layout -->
+    <string name="offline_text_title">Ops!</string>
+    <string name="offline_text_message">Sem conexão...</string>
+    <string name="offline_button_try_again">Tentar de novo</string>
 </resources>

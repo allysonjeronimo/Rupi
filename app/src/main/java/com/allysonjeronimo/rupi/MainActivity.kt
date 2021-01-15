@@ -3,13 +3,11 @@ package com.allysonjeronimo.rupi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast.makeText
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.allysonjeronimo.rupi.extensions.addFragment
-import com.allysonjeronimo.rupi.ui.main.MainFragment
+import com.allysonjeronimo.rupi.ui.converter.ConverterFragment
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.content_main_activity.*
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
         if (savedInstanceState == null) {
-            addFragment(R.id.container, MainFragment.newInstance())
+            addFragment(R.id.container, ConverterFragment.newInstance())
         }
 
         setupToolbar()

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:padding="16dp"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.converter.ConverterFragment">
 
     <Button
         android:id="@+id/button_currency"
@@ -21,7 +21,7 @@
         android:gravity="left|center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="8dp"
-        android:text="@string/text_currency"
+        android:text="@string/converter_text_currency"
         android:textColor="@color/colorDarkGray"
         app:layout_constraintBottom_toTopOf="@+id/text_currency_1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="42dp"
         android:background="@drawable/selector_button_green"
-        android:text="@string/text_convert"
+        android:text="@string/converter_button_convert"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +178,7 @@
         android:id="@+id/group_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="button_currency, text_currency_1, view_icon, text_currency_2, view_details, button_convert"
         app:layout_constraintBottom_toTopOf="@+id/button_currency"
         app:layout_constraintTop_toTopOf="parent"
@@ -193,4 +193,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include android:id="@+id/layout_offline" layout="@layout/offline_layout" android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

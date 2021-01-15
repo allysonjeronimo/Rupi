@@ -1,11 +1,11 @@
-package com.allysonjeronimo.rupi.ui.main
+package com.allysonjeronimo.rupi.ui.converter
 
 import androidx.lifecycle.*
 import com.allysonjeronimo.rupi.data.db.entity.Currency
 import com.allysonjeronimo.rupi.repository.CurrencyRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
+class ConverterViewModel(private val repository:CurrencyRepository) : ViewModel() {
 
     private var currencies = MutableLiveData<List<Currency>>()
     private var isLoading = MutableLiveData<Boolean>()
@@ -27,7 +27,7 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
             currentCurrency.value = currencies.value!![0]
         }
         else{
-            // show error
+            currentCurrency.value = null
         }
 
         isLoading.value = false
@@ -37,7 +37,7 @@ class MainViewModel(private val repository:CurrencyRepository) : ViewModel() {
         private val repository:CurrencyRepository
     ) : ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return MainViewModel(repository) as T
+            return ConverterViewModel(repository) as T
         }
     }
 }

@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="8dp"
-        tool:text="@string/text_currency"
+        tool:text="@string/converter_text_currency"
         android:gravity="center"
         android:textColor="@color/colorDarkGray"
         android:textSize="18sp"
