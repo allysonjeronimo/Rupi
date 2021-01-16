@@ -1,6 +1,6 @@
 # Rupi
 
-App de conversão e acompanhamento de cotações de moedas para Android em desenvolvimento utilizando Kotlin e arquitetura MVVM.
+App de conversão e acompanhamento de cotações de moedas para Android utilizando Kotlin e arquitetura MVVM.
 
 ## Screenshots
 
@@ -13,7 +13,7 @@ App de conversão e acompanhamento de cotações de moedas para Android em desen
 - Gráficos com histórico de cotações (Em Desenvolvimento)
 - Notificações de de variação de moedas selecionadas (Em Desenvolvimento)
 
-## Tecnologias:
+## Tecnologias
 
 - Kotlin
 - Room
@@ -22,6 +22,8 @@ App de conversão e acompanhamento de cotações de moedas para Android em desen
 - Retrofit
 - Coroutines
 
+## API
 
+O projeto utiliza a API de Cotação de Moedas "Awesome API" (https://docs.awesomeapi.com.br/api-de-moedas)
 
 
