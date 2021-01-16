@@ -4,6 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.allysonjeronimo.rupi.extensions.currencyFormat
 import java.util.*
 
 @Entity
@@ -19,21 +20,19 @@ data class Currency(
     @Ignore
     lateinit var prices:List<Price>
 
-    /*
     fun defaultValue() : String{
-        return 1.0.currencyFormat(this.locale, Currency.getInstance(code))
+        return 1.0.currencyFormat(currency = java.util.Currency.getInstance(code))
     }
 
     fun quotation() : String{
-        return sell.currencyFormat(Locale("pt", "BR"), Currency.getInstance("BRL"))
-    }*/
+        return lastPrice.sell.currencyFormat(Locale("pt", "BR"), java.util.Currency.getInstance("BRL"))
+    }
 
     fun icon() : String{
         return "ic_${code?.toLowerCase(Locale.ROOT)}"
     }
 
-    /*
     fun variation() : String{
-        return "${pctChange}%"
-    }*/
+        return "${lastPrice.pctChange}%"
+    }
 }

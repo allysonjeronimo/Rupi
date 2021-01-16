@@ -46,10 +46,15 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
     private fun observeEvents(){
         viewModel.currentCurrency().observe(this.viewLifecycleOwner, {
             currentCurrency ->
-            if(currentCurrency != null)
+            if(currentCurrency != null) {
+                showOfflineLayout(false)
+                showViews(true)
                 showValues(currentCurrency)
-            else
-                showNetworkError()
+            }
+            else{
+                showViews(false)
+                showOfflineLayout(true)
+            }
         })
 
         viewModel.isLoading().observe(this.viewLifecycleOwner, {
@@ -57,16 +62,19 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
         })
     }
 
-    private fun showNetworkError() {
-        group_view.visibility = View.GONE
-        layout_offline.visibility = View.VISIBLE
+    private fun showOfflineLayout(show:Boolean) {
+        layout_offline.visibility = if(show) View.VISIBLE else View.GONE
+    }
+
+    private fun showViews(show:Boolean){
+        group_view.visibility = if(show) View.VISIBLE else View.GONE
+    }
+
+    private fun showProgress(show:Boolean){
+        progress_loading.visibility = if(show) View.VISIBLE else View.GONE
     }
 
     private fun showValues(currentCurrency:Currency){
-
-        group_view.visibility = View.VISIBLE
-        layout_offline.visibility = View.GONE
-
         button_currency.setCompoundDrawablesWithIntrinsicBounds(
             requireContext().resourceId(currentCurrency.icon()),
             0,
@@ -75,35 +83,31 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
         )
         button_currency.text = currentCurrency.name
 
-        //text_currency_1.text = currentCurrency.defaultValue()
-        //text_currency_2.text = currentCurrency.quotation()
-        //text_variation.text = currentCurrency.variation()
+        text_currency_1.text = currentCurrency.defaultValue()
+        text_currency_2.text = currentCurrency.quotation()
+        text_variation.text = currentCurrency.variation()
         text_last_update.text = currentCurrency.lastPrice.date.toString(FORMAT_TIME_HOURS_MINUTES)
 
-        if(currentCurrency.lastPrice.pctChange > 0.0){
-            image_up.visibility = View.VISIBLE
-            image_down.visibility = View.GONE
-            image_flat.visibility = View.GONE
-        }
-        else if(currentCurrency.lastPrice.pctChange < 0.0){
-            image_up.visibility = View.GONE
-            image_down.visibility = View.VISIBLE
-            image_flat.visibility = View.GONE
-        }
-        else{
-            image_up.visibility = View.GONE
-            image_down.visibility = View.GONE
-            image_flat.visibility = View.VISIBLE
+        when{
+            currentCurrency.lastPrice.pctChange > 0.0 -> {
+                image_up.visibility = View.VISIBLE
+                image_down.visibility = View.GONE
+                image_flat.visibility = View.GONE
+            }
+            currentCurrency.lastPrice.pctChange < 0.0 -> {
+                image_up.visibility = View.GONE
+                image_down.visibility = View.VISIBLE
+                image_flat.visibility = View.GONE
+            }
+            else -> {
+                image_up.visibility = View.GONE
+                image_down.visibility = View.GONE
+                image_flat.visibility = View.VISIBLE
+            }
         }
     }
 
-    private fun showProgress(show:Boolean){
-        progress_loading.visibility = if(show) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
-    }
+
 
     private fun setListeners() {
         button_currency.setOnClickListener {
