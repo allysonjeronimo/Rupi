@@ -11,7 +11,7 @@ App de conversão e acompanhamento de cotações de moedas para Android utilizan
 - Cotação das principais moedas
 - Conversão de valores entre Real e moeda escolhida (Em Desenvolvimento)
 - Gráficos com histórico de cotações (Em Desenvolvimento)
-- Notificações de de variação de moedas selecionadas (Em Desenvolvimento)
+- Notificações de variação de moedas selecionadas (Em Desenvolvimento)
 
 ## Tecnologias
 
