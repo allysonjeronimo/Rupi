@@ -75,6 +75,7 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
     }
 
     private fun showValues(currentCurrency:Currency){
+
         button_currency.setCompoundDrawablesWithIntrinsicBounds(
             requireContext().resourceId(currentCurrency.icon()),
             0,
@@ -107,8 +108,6 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
         }
     }
 
-
-
     private fun setListeners() {
         button_currency.setOnClickListener {
             CurrenciesDialogFragment
@@ -125,6 +124,8 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
 
     override fun onStart() {
         super.onStart()
+        showViews(false)
+        showOfflineLayout(false)
         viewModel.getAll()
     }
 
