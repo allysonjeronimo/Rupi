@@ -10,7 +10,7 @@ import com.allysonjeronimo.rupi.data.db.entity.Currency
 import com.allysonjeronimo.rupi.data.network.ApiService
 import com.allysonjeronimo.rupi.extensions.FORMAT_TIME_HOURS_MINUTES
 import com.allysonjeronimo.rupi.extensions.resourceId
-import com.allysonjeronimo.rupi.extensions.toString
+import com.allysonjeronimo.rupi.extensions.toFormattedString
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
 import com.allysonjeronimo.rupi.ui.currencies.CurrenciesDialogFragment
 import kotlinx.android.synthetic.main.converter_fragment.*
@@ -46,32 +46,31 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
     private fun observeEvents(){
         viewModel.currentCurrency().observe(this.viewLifecycleOwner, {
             currentCurrency ->
-            if(currentCurrency != null) {
-                showOfflineLayout(false)
+            currentCurrency?.let{
                 showViews(true)
-                showValues(currentCurrency)
-            }
-            else{
-                showViews(false)
-                showOfflineLayout(true)
+                showValues(it)
             }
         })
 
         viewModel.isLoading().observe(this.viewLifecycleOwner, {
                 isLoading -> showProgress(isLoading)
         })
+
+        viewModel.isNetworkError().observe(this.viewLifecycleOwner, {
+            isNetworkError -> showOfflineLayout(isNetworkError)
+        })
     }
 
-    private fun showOfflineLayout(show:Boolean) {
+    private fun showProgress(show:Boolean){
+        progress_loading.visibility = if(show) View.VISIBLE else View.GONE
+    }
+
+    private fun showOfflineLayout(show:Boolean){
         layout_offline.visibility = if(show) View.VISIBLE else View.GONE
     }
 
     private fun showViews(show:Boolean){
         group_view.visibility = if(show) View.VISIBLE else View.GONE
-    }
-
-    private fun showProgress(show:Boolean){
-        progress_loading.visibility = if(show) View.VISIBLE else View.GONE
     }
 
     private fun showValues(currentCurrency:Currency){
@@ -87,7 +86,7 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
         text_currency_1.text = currentCurrency.defaultValue()
         text_currency_2.text = currentCurrency.quotation()
         text_variation.text = currentCurrency.variation()
-        text_last_update.text = currentCurrency.lastPrice.date.toString(FORMAT_TIME_HOURS_MINUTES)
+        text_last_update.text = currentCurrency.lastPrice.date.toFormattedString(FORMAT_TIME_HOURS_MINUTES)
 
         when{
             currentCurrency.lastPrice.pctChange > 0.0 -> {

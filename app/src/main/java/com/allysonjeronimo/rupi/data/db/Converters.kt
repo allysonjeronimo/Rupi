@@ -2,6 +2,7 @@ package com.allysonjeronimo.rupi.data.db
 
 import androidx.room.TypeConverter
 import com.allysonjeronimo.rupi.extensions.toDate
+import com.allysonjeronimo.rupi.extensions.toFormattedString
 import java.util.*
 
 class Converters{
@@ -13,6 +14,6 @@ class Converters{
 
     @TypeConverter
     fun dateToTimestamp(date:Date?) : String?{
-        return date?.toString()
+        return date?.toFormattedString()
     }
 }

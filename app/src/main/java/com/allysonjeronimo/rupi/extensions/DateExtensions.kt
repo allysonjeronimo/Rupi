@@ -5,7 +5,7 @@ import java.util.*
 
 const val FORMAT_TIME_HOURS_MINUTES = "HH:mm"
 
-fun Date.toString(format:String = "yyyy-MM-dd hh:mm:ss") : String{
+fun Date.toFormattedString(format:String = "yyyy-MM-dd hh:mm:ss") : String{
     val formatter = SimpleDateFormat(format)
     return formatter.format(this)
 }
