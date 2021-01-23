@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.allysonjeronimo.rupi.extensions.currencyFormat
+import com.allysonjeronimo.rupi.extensions.currencyFormatWithoutSymbol
 import java.util.*
 
 @Entity
@@ -21,7 +22,7 @@ data class Currency(
     lateinit var prices:List<Price>
 
     fun defaultValue() : String{
-        return 1.0.currencyFormat(currency = java.util.Currency.getInstance(code))
+        return 1.0.currencyFormatWithoutSymbol()
     }
 
     fun quotation() : String{

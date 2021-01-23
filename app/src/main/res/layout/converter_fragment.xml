@@ -29,20 +29,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+
+    <com.allysonjeronimo.rupi.ui.custom.TextCurrencyView
         android:id="@+id/text_currency_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/big_noodle"
-        android:gravity="center"
-        android:text="US$ 0,00"
-        android:textColor="@color/colorDarkGray"
-        android:textSize="56sp"
         app:layout_constraintBottom_toTopOf="@+id/view_icon"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_currency" />
+        app:layout_constraintTop_toBottomOf="@+id/button_currency"
+        />
 
     <FrameLayout
         android:id="@+id/view_icon"
@@ -178,7 +174,7 @@
         android:id="@+id/group_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:constraint_referenced_ids="button_currency, text_currency_1, view_icon, text_currency_2, view_details, button_convert"
         app:layout_constraintBottom_toTopOf="@+id/button_currency"
         app:layout_constraintTop_toTopOf="parent"
@@ -188,7 +184,7 @@
         android:id="@+id/progress_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

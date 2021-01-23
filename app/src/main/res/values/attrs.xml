@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextCurrency">
+        <attr name="symbol" format="string"/>
+        <attr name="value" format="float"/>
+    </declare-styleable>
+</resources>
