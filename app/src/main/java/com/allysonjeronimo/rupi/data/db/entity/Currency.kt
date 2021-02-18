@@ -21,8 +21,8 @@ data class Currency(
     @Ignore
     lateinit var prices:List<Price>
 
-    fun defaultValue() : String{
-        return 1.0.currencyFormatWithoutSymbol()
+    fun defaultValue() : Double{
+        return 1.0
     }
 
     fun quotation() : String{

@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.allysonjeronimo.rupi.R
+import me.abhinay.input.CurrencyEditText
 
 class TextCurrencyView(
     context: Context,
@@ -38,7 +39,7 @@ class TextCurrencyView(
 
         textSymbol = getChildAt(0) as TextView
         textValue = getChildAt(1) as EditText
-
+        
         symbol?.let{
             setSymbol(symbol)
         }

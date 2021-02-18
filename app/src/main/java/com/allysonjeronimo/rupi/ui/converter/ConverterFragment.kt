@@ -9,6 +9,7 @@ import com.allysonjeronimo.rupi.data.db.AppDatabase
 import com.allysonjeronimo.rupi.data.db.entity.Currency
 import com.allysonjeronimo.rupi.data.network.ApiService
 import com.allysonjeronimo.rupi.extensions.FORMAT_TIME_HOURS_MINUTES
+import com.allysonjeronimo.rupi.extensions.currencySymbol
 import com.allysonjeronimo.rupi.extensions.resourceId
 import com.allysonjeronimo.rupi.extensions.toFormattedString
 import com.allysonjeronimo.rupi.repository.CurrencyDataRepository
@@ -83,8 +84,8 @@ class ConverterFragment : Fragment(R.layout.converter_fragment) {
         )
         button_currency.text = currentCurrency.name
 
-        text_currency_1.setValue(0.0)
-        //text_currency_1_value.setText(currentCurrency.defaultValue())
+        text_currency_1.setValue(currentCurrency.defaultValue())
+        text_currency_1.setSymbol(currentCurrency.code.currencySymbol())
         text_currency_2.text = currentCurrency.quotation()
         text_variation.text = currentCurrency.variation()
         text_last_update.text = currentCurrency.lastPrice.date.toFormattedString(FORMAT_TIME_HOURS_MINUTES)

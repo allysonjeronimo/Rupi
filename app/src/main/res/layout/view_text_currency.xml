@@ -13,6 +13,7 @@
         android:layout_marginRight="10dp"
         />
 
+
     <EditText
         android:id="@+id/text_value"
         android:layout_width="wrap_content"
@@ -22,7 +23,9 @@
         android:fontFamily="@font/big_noodle"
         android:maxLines="1"
         android:maxLength="10"
-        android:text="0,00"
+        android:inputType="number"
+        android:padding="0dp"
         />
+
 
 </merge>
